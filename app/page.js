@@ -65,16 +65,83 @@ export default function Home() {
 				}`}
 			></div>
 
+			{/* Bottom Monitor */}
+			<div
+				className={`absolute w-[45vw] h-[77vh] left-[10vw] top-[62.5vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
+					started ? "opacity-100" : "opacity-0"
+				} ${
+					menuVisible && activeMenu == "faq"
+						? "translate-y-0"
+						: "translate-y-full"
+				}`}
+			>
+				{/* Bottom Monitor Image */}
+				<img
+					src="/imgs/monitor-bottom.webp"
+					className="w-full h-full object-fill absolute inset-0 drop-shadow-2xl drop-shadow-neutral-600/40"
+				/>
+
+				{/* Close Button */}
+				{menuVisible && (
+					<button
+						onClick={handleCloseMenu}
+						className="absolute top-[16vh] right-[6vw] text-white text-[5vh] leading-[5vh] cursor-pointer transition-all z-[101] choco"
+					>
+						X
+					</button>
+				)}
+
+				{/* FAQ Content */}
+				{activeMenu === "faq" && menuVisible && (
+					<div className="absolute inset-0 px-[2vw] pt-[1vh] py-[3vh] bg-blue-400/0 w-[26vw] h-[41vh] top-[21vh] left-[13.5vw] text-white overflow-y-auto z-[100]">
+						<h2 className="text-[7vh] leading-[7vh] choco font-bold mb-6 text-white mt-8">
+							Frequently Asked Questions
+						</h2>
+						<div className="space-y-6">
+							<div>
+								<h3 className="text-2xl font-semibold mb-2">
+									Here is some question!
+								</h3>
+								<p className="text-gray-300">
+									And here is an answer for that one random question
+								</p>
+							</div>
+							<div>
+								<h3 className="text-2xl font-semibold mb-2">
+									Here is another one fo the questions
+								</h3>
+								<p className="text-gray-300">
+									And here another one of the possible answer for that one
+									random question
+								</p>
+							</div>
+							<div>
+								<h3 className="text-2xl font-semibold mb-2">
+									Here is some question!
+								</h3>
+								<p className="text-gray-300">
+									And here is an answer for that one random question
+								</p>
+							</div>
+						</div>
+					</div>
+				)}
+			</div>
+
 			{/* Side Monitor Container */}
 			<div
 				className={`absolute w-[70vw] h-[70vh] left-[30vw] top-[50vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
 					started ? "opacity-100" : "opacity-0"
-				} ${menuVisible ? "translate-x-0" : "translate-x-full"}`}
+				} ${
+					menuVisible && activeMenu == "learn"
+						? "translate-x-0"
+						: "translate-x-full"
+				}`}
 			>
 				{/* Side Monitor Image */}
 				<img
 					src="side-monitor.webp"
-					className="w-full h-full object-fill absolute inset-0 drop-shadow-2xl drop-shadow-neutral-400/40"
+					className="w-full h-full object-fill absolute inset-0 drop-shadow-2xl drop-shadow-neutral-600/40"
 				/>
 
 				{/* Close Button */}
@@ -87,41 +154,6 @@ export default function Home() {
 					</button>
 				)}
 
-				{/* FAQ Content */}
-				{activeMenu === "faq" && menuVisible && (
-					<div className="absolute inset-0 px-[2vw] pt-[1vh] py-[3vh] bg-yellow-200/0 w-[55vw] h-[50vh] top-[10vh] left-[8vw] text-white overflow-y-auto z-[100]">
-						<h2 className="text-[7vh] leading-[7vh] choco font-bold mb-6 text-white mt-8">
-							Frequently Asked Questions
-						</h2>
-						<div className="space-y-6">
-							<div>
-								<h3 className="text-2xl font-semibold mb-2">
-									How long do I need to survive?
-								</h3>
-								<p className="text-gray-300">
-									Five hours. From 12 AM to 5 AM. Can you make it?
-								</p>
-							</div>
-							<div>
-								<h3 className="text-2xl font-semibold mb-2">
-									What happens if I fail?
-								</h3>
-								<p className="text-gray-300">
-									Let's just say... you don't want to find out.
-								</p>
-							</div>
-							<div>
-								<h3 className="text-2xl font-semibold mb-2">
-									Can I save my progress?
-								</h3>
-								<p className="text-gray-300">
-									The night is long, but there are no checkpoints. Stay alert.
-								</p>
-							</div>
-						</div>
-					</div>
-				)}
-
 				{/* Learn More Content */}
 				{activeMenu === "learn" && menuVisible && (
 					<div className="absolute inset-0 px-[2vw] pt-[1vh] py-[3vh] bg-yellow-200/0 w-[55vw] h-[50vh] top-[10vh] left-[8vw] text-white overflow-y-auto z-[100]">
@@ -130,18 +162,24 @@ export default function Home() {
 						</h2>
 						<div className="space-y-4">
 							<p className="text-gray-300">
-								Welcome to the ultimate survival horror experience. Five Hours
-								at Freddy's puts you in the shoes of a night security guard at
-								Freddy Fazbear's Pizza.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+								vel sapien eget Lorem100 metus efficitur commodo. Sed at nunc ac
+								nisl convallis tincidunt. In hac habitasse platea dictumst.
 							</p>
 							<p className="text-gray-300">
-								Use your monitors to keep track of the animatronics. They become
-								more active as the night progresses. Conserve power wisely - if
-								you run out, you're in the dark.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+								vel sapien eget Lorem100 metus efficitur commodo. Sed at nunc ac
+								nisl convallis tincidunt. In hac habitasse platea dictumst. Sed
+								at nunc ac nisl convallis tincidunt. In hac habitasse platea
+								dictumst. In hac habitasse platea dictumst. Sed at nunc ac nisl
+								convallis tincidunt. In hac habitasse platea dictumst.
 							</p>
 							<p className="text-gray-300">
-								Listen carefully for sounds in the vents. Check your cameras
-								frequently. And whatever you do... don't fall asleep.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+								vel sapien eget Lorem100 metus efficitur commodo. Sed at nunc ac
+								nisl convallis tincidunt. In hac habitasse platea dictumst. Sed
+								at nunc ac nisl convallis tincidunt. In hac habitasse platea
+								dictumst.
 							</p>
 						</div>
 					</div>
@@ -149,13 +187,13 @@ export default function Home() {
 			</div>
 
 			{/* Audio */}
-			{/* 	<audio
+			<audio
 				ref={audioRef}
 				src="/sounds/forbidden-nocturne.mp3"
 				loop
 				playsInline
 				preload="auto"
-			/> */}
+			/>
 			<audio ref={clickRef} src="/sounds/mouse-click.mp3" preload="auto" />
 
 			{/* Monitor Screens */}
@@ -164,41 +202,41 @@ export default function Home() {
 					<div onClick={() => handleMenuClick("learn")} className="group">
 						<img
 							src="/imgs/learn-more.png"
-							className="z-80 absolute right-[18.5vw] w-[28.5vw] h-[45vh] top-[18.5vh] hover:scale-[103%] transition-all ease-in-out cursor-pointer group-hover:blur-xl"
+							className="z-80 absolute right-[18.5vw] w-[28.5vw] h-[45vh] top-[18.5vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-xl"
 						/>
 						<img
 							src="/imgs/learn-more.png"
-							className="z-80 absolute right-[18.5vw] w-[28.5vw] h-[45vh] top-[18.5vh] hover:scale-[103%] transition-all ease-in-out cursor-pointer"
+							className="z-80 absolute right-[18.5vw] w-[28.5vw] h-[45vh] top-[18.5vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
 					<div onClick={playClick} className="group">
 						<img
 							src="/imgs/submit.png"
-							className="z-80 absolute left-[29.75vw] w-[10.5vw] h-[13.5vh] top-[52vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
+							className="z-80 absolute left-[29.75vw] w-[10.5vw] h-[13.5vh] top-[52vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
 						/>
 						<img
 							src="/imgs/submit.png"
-							className="z-80 absolute left-[29.75vw] w-[10.5vw] h-[13.5vh] top-[52vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer"
+							className="z-80 absolute left-[29.75vw] w-[10.5vw] h-[13.5vh] top-[52vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
 					<div onClick={() => handleMenuClick("faq")} className="group">
 						<img
 							src="/imgs/faq.png"
-							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
+							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
 						/>
 						<img
 							src="/imgs/faq.png"
-							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer"
+							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
 					<div onClick={playClick} className="group">
 						<img
 							src="/imgs/slack.png"
-							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
+							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
 						/>
 						<img
 							src="/imgs/slack.png"
-							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[104%] transition-all ease-in-out cursor-pointer"
+							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
 
@@ -216,12 +254,12 @@ export default function Home() {
 				<div className="absolute inset-0 z-10 flex items-center justify-center">
 					{/* background image */}
 					<img
-						src="img2.jpg"
+						src="door.webp"
 						className="absolute inset-0 w-full h-[101vh] object-cover"
 					/>
 
 					{/* dark overlay */}
-					<div className="absolute inset-0 bg-black/50" />
+					<div className="absolute inset-0 bg-black/0" />
 
 					{/* content */}
 					<div className="relative z-20 flex flex-col items-center gap-6 text-white">
@@ -233,7 +271,7 @@ export default function Home() {
 							onClick={handleStart}
 							className="px-8 py-3 text-lg bg-black text-white hover:scale-105 transition-transform"
 						>
-							Do you want to try?
+							Try It
 						</button>
 					</div>
 				</div>
