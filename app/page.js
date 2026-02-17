@@ -1,65 +1,96 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	const audioRef = useRef(null);
+	const clickRef = useRef(null);
+	const [started, setStarted] = useState(false);
+
+	const handleStart = () => {
+		if (audioRef.current) {
+			audioRef.current.muted = false;
+			audioRef.current.volume = 0.2;
+			audioRef.current.play();
+		}
+		setStarted(true);
+	};
+
+	const playClick = () => {
+		if (!clickRef.current) return;
+		clickRef.current.currentTime = 0;
+		clickRef.current.play();
+	};
+
+	// Prepare audio silently (optional but smooth)
+	useEffect(() => {
+		if (audioRef.current) {
+			audioRef.current.muted = true;
+			audioRef.current.play().catch(() => {});
+		}
+	}, []);
+
+	return (
+		<div className="relative w-full h-screen overflow-hidden">
+			{/* MAIN BACKGROUND (after start) */}
+			<img
+				src="img5.png"
+				className={`absolute inset-0 z-[1] w-full h-full object-cover transition-opacity duration-700 ${
+					started ? "opacity-100" : "opacity-0"
+				}`}
+			/>
+
+			{/* AUDIO */}
+			<audio
+				ref={audioRef}
+				src="/sounds/forbidden-nocturne.mp3"
+				loop
+				playsInline
+			/>
+			<audio ref={clickRef} src="/sounds/mouse-click.mp3" preload="auto" />
+
+			{/* SCREEN OVERLAY */}
+			{started && (
+				<div className="z-99">
+					<div
+						onClick={playClick}
+						className="w-[8vw] h-[13vh] bg-yellow-200 absolute top-[32.5vh] left-0 z-99"
+					></div>
+					<h1 className="heref text-[10vh] leading-[10vh] text-white absolute top-[2vh] left-[2vw] z-99">
+						Five Nights <br /> at Freddy's
+					</h1>
+					<h1 className="heref text-[10vh] leading-[10vh] text-white absolute bottom-[3vh] right-[2vw] z-99">
+						Can you survive?
+					</h1>
+				</div>
+			)}
+
+			{/* START SCREEN OVERLAY */}
+			{!started && (
+				<div className="absolute inset-0 z-10 flex items-center justify-center">
+					{/* background image */}
+					<img
+						src="img1.png"
+						className="absolute inset-0 w-full h-full object-cover"
+					/>
+
+					{/* dark overlay */}
+					<div className="absolute inset-0 bg-black/50" />
+
+					{/* content */}
+					<div className="relative z-20 flex flex-col items-center gap-6 text-white">
+						<h1 className="text-[12vh] font-semibold tracking-wide choco ">
+							Can you make it?
+						</h1>
+
+						<button
+							onClick={handleStart}
+							className="px-8 py-3 text-lg bg-black text-white hover:scale-105 transition-transform"
+						>
+							Do you want to try?
+						</button>
+					</div>
+				</div>
+			)}
+		</div>
+	);
 }
