@@ -195,8 +195,8 @@ export default function Home() {
 				<div className="absolute inset-0 z-10 flex items-center justify-center">
 					{/* background image */}
 					<img
-						src="img1.png"
-						className="absolute inset-0 w-full h-full object-cover"
+						src="img2.jpg"
+						className="absolute inset-0 w-full h-[101vh] object-cover"
 					/>
 
 					{/* dark overlay */}
