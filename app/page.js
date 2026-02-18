@@ -191,7 +191,7 @@ export default function Home() {
 				className={`absolute w-[37.5vw] h-[50vh] left-[30vw] top-[75vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
 					started ? "opacity-100" : "opacity-0"
 				} ${
-					menuVisible && activeMenu == "slack"
+					menuVisible && activeMenu == "help"
 						? "translate-y-0"
 						: "translate-y-full"
 				}`}
@@ -213,7 +213,7 @@ export default function Home() {
 				)}
 
 				{/* Contact Content */}
-				{activeMenu === "slack" && menuVisible && (
+				{activeMenu === "help" && menuVisible && (
 					<div className="absolute inset-0 px-[1vw] pt-[1vh] py-[3vh] bg-yellow-200/0 w-[17vw] h-[26vh] top-[15vh] left-[11vw] text-white overflow-y-auto z-[100] flex flex-col items-center justify-center">
 						<h2 className="text-[4.5vh] leading-[4.5vh] choco font-bold mb-[2vh] text-white mt-[1vh] text-center">
 							Contact
@@ -273,7 +273,7 @@ export default function Home() {
 							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
-					<div onClick={() => handleMenuClick("slack")} className="group">
+					<div className="group">
 						<img
 							src="/imgs/slack.png"
 							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
@@ -281,6 +281,16 @@ export default function Home() {
 						<img
 							src="/imgs/slack.png"
 							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
+						/>
+					</div>
+					<div onClick={() => handleMenuClick("help")} className="group">
+						<img
+							src="/imgs/help.png"
+							className="z-80 absolute left-[19vw] w-[9vw] h-[16vh] top-[29.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
+						/>
+						<img
+							src="/imgs/help.png"
+							className="z-80 absolute left-[19vw] w-[9vw] h-[16vh] top-[29.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
 
