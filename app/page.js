@@ -67,7 +67,7 @@ export default function Home() {
 
 			{/* Bottom Monitor */}
 			<div
-				className={`absolute w-[45vw] h-[77vh] left-[10vw] top-[62.5vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
+				className={`absolute w-[45vw] h-[77vh] left-[3vw] top-[62.5vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
 					started ? "opacity-100" : "opacity-0"
 				} ${
 					menuVisible && activeMenu == "faq"
@@ -186,6 +186,50 @@ export default function Home() {
 				)}
 			</div>
 
+			{/* Middle Monitor Container */}
+			<div
+				className={`absolute w-[37.5vw] h-[50vh] left-[30vw] top-[75vh] translate-y-[-50%] transition-all duration-600 ease-in-out z-99 ${
+					started ? "opacity-100" : "opacity-0"
+				} ${
+					menuVisible && activeMenu == "slack"
+						? "translate-y-0"
+						: "translate-y-full"
+				}`}
+			>
+				{/* Middle Monitor Image */}
+				<img
+					src="/imgs/monitor-middle.png"
+					className="w-full h-full object-fill absolute inset-0"
+				/>
+
+				{/* Close Button */}
+				{menuVisible && (
+					<button
+						onClick={handleCloseMenu}
+						className="absolute top-[10vh] right-[5vw] text-white text-[6vh] cursor-pointer transition-all z-[101] choco"
+					>
+						X
+					</button>
+				)}
+
+				{/* Contact Content */}
+				{activeMenu === "slack" && menuVisible && (
+					<div className="absolute inset-0 px-[1vw] pt-[1vh] py-[3vh] bg-yellow-200/0 w-[17vw] h-[26vh] top-[15vh] left-[11vw] text-white overflow-y-auto z-[100] flex flex-col items-center justify-center">
+						<h2 className="text-[4.5vh] leading-[4.5vh] choco font-bold mb-[2vh] text-white mt-[1vh] text-center">
+							Contact
+						</h2>
+						<div className="space-y-4">
+							<p className="text-gray-300 text-[1.75vh]">
+								Slack contact @Jane or check out #fhaf in Slack
+							</p>
+							<p className="text-gray-300 text-[1.75vh]">
+								Or you can also contact by email here someone@gmail.com
+							</p>
+						</div>
+					</div>
+				)}
+			</div>
+
 			{/* Audio */}
 			<audio
 				ref={audioRef}
@@ -229,7 +273,7 @@ export default function Home() {
 							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
-					<div onClick={playClick} className="group">
+					<div onClick={() => handleMenuClick("slack")} className="group">
 						<img
 							src="/imgs/slack.png"
 							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
@@ -254,7 +298,7 @@ export default function Home() {
 				<div className="absolute inset-0 z-10 flex items-center justify-center">
 					{/* background image */}
 					<img
-						src="door.webp"
+						src="/imgs/intro-bg.webp"
 						className="absolute inset-0 w-full h-[101vh] object-cover"
 					/>
 
