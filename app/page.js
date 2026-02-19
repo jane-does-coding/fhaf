@@ -59,6 +59,12 @@ export default function Home() {
 					started ? "opacity-100" : "opacity-0"
 				}`}
 			/>
+			<img
+				src="/imgs/animatronic.webp"
+				className={`absolute inset-0 z-[80] w-[17vw] h-[20vh] top-[80vh] left-[5vw] hover:scale-[107%] cursor-pointer transition-all ease-in-out object-fill duration-300 ${
+					started ? "opacity-100" : "opacity-0"
+				}`}
+			/>
 			<div
 				className={`absolute inset-0 z-[1] w-[100vw] h-[20vh] top-[80vh] object-fill transition-opacity duration-700 bg-linear-to-b from-10% from-black/70 to-black  ${
 					started ? "opacity-100" : "opacity-0"
@@ -308,7 +314,7 @@ export default function Home() {
 				<div className="absolute inset-0 z-10 flex items-center justify-center">
 					{/* background image */}
 					<img
-						src="/imgs/intro-bg.webp"
+						src="/img1.png"
 						className="absolute inset-0 w-full h-[101vh] object-cover"
 					/>
 
