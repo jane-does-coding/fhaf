@@ -279,7 +279,10 @@ export default function Home() {
 							className="z-80 absolute left-[29.5vw] w-[10.25vw] h-[19.5vh] top-[26vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
 					</div>
-					<div className="group">
+					<a
+						href="https://hackclub.enterprise.slack.com/archives/C0AGPCVQDMW"
+						className="group"
+					>
 						<img
 							src="/imgs/slack.png"
 							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer group-hover:blur-lg"
@@ -288,7 +291,7 @@ export default function Home() {
 							src="/imgs/slack.png"
 							className="z-80 absolute left-[40.5vw] w-[10.75vw] h-[26vh] top-[47.25vh] hover:scale-[100%] transition-all ease-in-out cursor-pointer"
 						/>
-					</div>
+					</a>
 					<div onClick={() => handleMenuClick("help")} className="group">
 						<img
 							src="/imgs/help.png"
